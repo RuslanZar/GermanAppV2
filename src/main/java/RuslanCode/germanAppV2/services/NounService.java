@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class NounService {
+
     private final NounsRepository nounsRepository;
     private final UserNounLinkRepository userNounLinkRepository;
     private final UserNounLinkService userNounLinkService;

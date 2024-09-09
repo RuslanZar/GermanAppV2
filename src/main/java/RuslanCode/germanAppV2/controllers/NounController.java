@@ -26,6 +26,7 @@ public class NounController {
     private final UserNounLinkService userNounLinkService;
     private final UserService userService;
 
+
     @GetMapping("/nouns")
     public String showNounsPage(Model model) throws IOException {
         model.addAttribute("menuList", Menu.getMenuList());
