@@ -9,8 +9,8 @@
 		<relativePath/>
 	</parent>
 	<groupId>RuslanCode</groupId>
-	<artifactId>german</artifactId>
-	<version>2.0.1</version>
+	<artifactId>ger</artifactId>
+	<version>2</version>
 	<name>german</name>
 	<packaging>jar</packaging>
 	<description>German application</description>
