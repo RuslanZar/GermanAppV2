@@ -10,13 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to Server
-      uses: appleboy/ssh-action@v0.1.3
-      with:
-        host: ${{194.26.138.64}}   # IP адрес вашего сервера
-        username: ${{ root }}  # Пользователь сервера
-        key: ${{ bNeky1zQEjbrbxB2uUeyrVBNE8JdfyPmk40u6tXHRRw }}  # Закрытый SSH ключ
-        script: |
-          cd /security
-          git pull origin main
-          ./deploy.sh
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{ secrets.SERVER_IP }}        # IP адрес сервера
+          username: ${{ secrets.SERVER_USER }}  # Имя пользователя на сервере (например, root)
+          key: ${{ secrets.SERVER_SSH_KEY }}    # Закрытый SSH ключ
+          script: |
+            cd /security
+            git pull origin main
+            ./deploy.sh
