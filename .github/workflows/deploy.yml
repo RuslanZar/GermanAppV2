@@ -23,4 +23,4 @@ jobs:
           script: |
             cd /root/security
             git pull origin master
-            root/deploy.sh
+            ./deploy.sh
