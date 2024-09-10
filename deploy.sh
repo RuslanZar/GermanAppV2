@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Путь к директории с вашим проектом
-PROJECT_DIR="/security"
+PROJECT_DIR="/root/security"
 
 # Имя вашего JAR файла
 JAR_NAME="ger-2.jar"
