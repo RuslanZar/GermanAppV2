@@ -22,7 +22,7 @@ git pull origin master
 
 # Сборка проекта и создание JAR файла
 echo "Сборка проекта..."
-./mvnw clean package -DskipTests  # Используем Maven Wrapper для сборки. Если у вас Gradle, используйте ./gradlew build
+mvn clean package -DskipTests  # Используем Maven Wrapper для сборки. Если у вас Gradle, используйте ./gradlew build
 
 # Проверяем, что сборка прошла успешно и JAR файл создан
 if [ ! -f target/$JAR_NAME ]; then
