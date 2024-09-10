@@ -17,8 +17,8 @@ pkill -f $JAR_NAME
 # Обновляем код до последней версии main ветки
 echo "Обновление репозитория..."
 git fetch origin
-git reset --hard origin/main
-git pull origin main
+git reset --hard origin/master
+git pull origin master
 
 # Сборка проекта и создание JAR файла
 echo "Сборка проекта..."
