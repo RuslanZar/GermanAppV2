@@ -1,0 +1,22 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@v0.1.3
+      with:
+        host: ${{194.26.138.64}}   # IP адрес вашего сервера
+        username: ${{ root }}  # Пользователь сервера
+        key: ${{ bNeky1zQEjbrbxB2uUeyrVBNE8JdfyPmk40u6tXHRRw }}  # Закрытый SSH ключ
+        script: |
+          cd /security
+          git pull origin main
+          ./deploy.sh
