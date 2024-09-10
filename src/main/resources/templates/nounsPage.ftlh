@@ -161,7 +161,7 @@
 </head>
 <body>
 <header>
-    <h1 style="font-size: 40px; color: white; text-align: center; width : 100%">Svinka App
+    <h1 style="font-size: 40px; color: white; text-align: center; width : 100%">German App
         v<#if version?has_content>${version}</#if></h1>
 </header>
 
