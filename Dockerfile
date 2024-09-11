@@ -1,24 +1,27 @@
-# Используем базовый образ Maven
-FROM jelastic/maven:3.9.5-openjdk-21
+# Этап сборки
+FROM maven:3.9.5-openjdk-21 AS build
 
 # Устанавливаем рабочую директорию
-WORKDIR /jar/
+WORKDIR /app
 
 # Копируем файлы проекта
 COPY pom.xml .
-COPY src /root/security/src
+COPY src /app/src
 
-# Собираем проект
-RUN mvn clean package
+# Сборка проекта
+RUN mvn clean package -DskipTests
 
-# Используем базовый образ для запуска Java
+# Финальный этап
 FROM azul/zulu-openjdk:21
 
-# Копируем собранный JAR-файл
-#COPY --from=build /root/security/target/ger-2.jar /jar/ger-2.jar
+# Устанавливаем рабочую директорию
+WORKDIR /jar
 
-# Открываем порт для приложения
+# Копируем JAR файл из предыдущего этапа
+COPY --from=build /app/target/ger-2.jar /jar/ger-2.jar
+
+# Открываем порт
 EXPOSE 8080
 
-# Команда для запуска приложения
-ENTRYPOINT ["java", "-jar", "./ger-2.jar"]
+# Указываем команду для запуска JAR файла
+ENTRYPOINT ["java", "-jar", "ger-2.jar"]
