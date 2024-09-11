@@ -2,7 +2,7 @@
 FROM jelastic/maven:3.9.5-openjdk-21
 
 # Устанавливаем рабочую директорию
-WORKDIR /root/security
+WORKDIR /jar/
 
 # Копируем файлы проекта
 COPY pom.xml .
@@ -21,4 +21,4 @@ FROM azul/zulu-openjdk:21
 EXPOSE 8080
 
 # Команда для запуска приложения
-ENTRYPOINT ["java", "-jar", "ger-2.jar"]
+ENTRYPOINT ["java", "-jar", "/jar/ger-2.jar"]
