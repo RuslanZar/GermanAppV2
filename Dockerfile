@@ -2,11 +2,11 @@
 FROM jelastic/maven:3.9.5-openjdk-21
 
 # Устанавливаем рабочую директорию
-WORKDIR /app
+WORKDIR /root/security
 
 # Копируем файлы проекта
 COPY pom.xml .
-COPY src /app/src
+COPY src /root/security/src
 
 # Собираем проект
 RUN mvn clean package
@@ -15,7 +15,7 @@ RUN mvn clean package
 FROM azul/zulu-openjdk:21
 
 # Копируем собранный JAR-файл
-COPY --from=build /app/target/ger-2.jar /app/my-ger-2.jar
+COPY --from=build /root/security/target/ger-2.jar /root/security/my-app-2.jar
 
 # Открываем порт для приложения
 EXPOSE 8080
