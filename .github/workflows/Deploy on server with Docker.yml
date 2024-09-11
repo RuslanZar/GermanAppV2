@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+workflow_dispatch:  # Добавляем возможность ручного запуска
 
 jobs:
   deploy:
@@ -19,8 +20,8 @@ jobs:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
         script: |
-          cd /security
+          cd /root/security
           git pull origin master
+          cd /root
           ./deploy.sh
