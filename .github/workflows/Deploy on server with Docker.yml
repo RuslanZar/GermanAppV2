@@ -24,4 +24,4 @@ jobs:
           cd /root/security
           git pull origin master
           cd /root
-          ./deploy.sh
+          ./dockerDeploy.sh
