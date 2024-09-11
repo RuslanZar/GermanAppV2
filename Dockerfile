@@ -15,7 +15,7 @@ RUN mvn clean package
 FROM azul/zulu-openjdk:21
 
 # Копируем собранный JAR-файл
-COPY --from=build /app/target/my-app.jar /app/my-app.jar
+COPY --from=build /app/target/ger-2.jar /app/my-ger-2.jar
 
 # Открываем порт для приложения
 EXPOSE 8080
