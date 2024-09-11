@@ -4,24 +4,24 @@ on:
   push:
     branches:
       - master
-workflow_dispatch:  # Добавляем возможность ручного запуска
+  workflow_dispatch:  # Добавляем возможность ручного запуска
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up SSH
-      uses: appleboy/ssh-action@v0.1.3
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd /root/security
-          git pull origin master
-          cd /root
-          ./dockerDeploy.sh
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /root/security
+            git pull origin master
+            cd /root
+            ./dockerDeploy.sh
