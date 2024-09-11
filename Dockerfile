@@ -21,4 +21,4 @@ FROM azul/zulu-openjdk:21
 EXPOSE 8080
 
 # Команда для запуска приложения
-ENTRYPOINT ["java", "-jar", "my-app.jar"]
+ENTRYPOINT ["java", "-jar", "ger-2.jar"]
