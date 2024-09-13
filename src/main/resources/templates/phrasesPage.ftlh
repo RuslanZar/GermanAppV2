@@ -100,7 +100,7 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"] {
+        input[type="submit"], button  {
             grid-column: span 2;
             padding: 10px;
             background-color: #3498db;
@@ -177,14 +177,22 @@
 
             <div>
                 <label for="german_phrase">Phrase auf Deutsch:</label>
-                <input type="text" id="german_phrase" name="german_phrase" required>
+                <input onclick="changeActiveElement(id)" type="text" id="german_phrase" name="german_phrase" required>
             </div>
 
             <div>
                 <label for="russian_Phrase">Phrase auf Russisch:</label>
-                <input type="text" id="russian_phrase" name="russian_phrase" required>
+                <input onclick="changeActiveElement(id)" type="text" id="russian_phrase" name="russian_phrase" required>
             </div>
-
+            <div>
+                <button type="button" onclick="concatenate('ä')" style="margin-top: 20px">ä</button>
+                <button type="button" onclick="concatenate('Ä')" style="margin-top: 20px">Ä</button>
+                <button type="button" onclick="concatenate('ö')" style="margin-top: 20px">ö</button>
+                <button type="button" onclick="concatenate('Ö')" style="margin-top: 20px">Ö</button>
+                <button type="button" onclick="concatenate('ü')" style="margin-top: 20px">ü</button>
+                <button type="button" onclick="concatenate('Ü')" style="margin-top: 20px">Ü</button>
+                <button type="button" onclick="concatenate('ß')" style="margin-top: 20px">ß</button>
+            </div>
             <input type="submit" value="Hinzufügen">
         </form>
 
@@ -264,6 +272,25 @@
                         alert('Failed. Please try again.');
                     }
                 })
+        }
+    </script>
+    <script title="vars">
+        let activeElement = null;
+    </script>
+    <script title="active element change">
+        function changeActiveElement(id) {
+            activeElement = document.getElementById(id)
+        }
+    </script>
+    <script title="concatenate letter">
+
+        function concatenate(letter) {
+            if (activeElement !== null){
+                if (activeElement.tagName === 'INPUT' && activeElement.type === 'text') {
+                    activeElement.value += letter;
+                    activeElement.focus()
+                }
+            }
         }
     </script>
 </main>

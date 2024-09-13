@@ -1,10 +1,10 @@
 package RuslanCode.germanAppV2.controllers;
 
-import RuslanCode.germanAppV2.model.Noun;
-import RuslanCode.germanAppV2.services.NounService;
-import RuslanCode.germanAppV2.services.UserNounLinkService;
+import RuslanCode.germanAppV2.model.noun.Noun;
+import RuslanCode.germanAppV2.services.noun.NounService;
+import RuslanCode.germanAppV2.services.noun.UserNounLinkService;
 import RuslanCode.germanAppV2.services.UserService;
-import RuslanCode.germanAppV2.utilities.Menu;
+import RuslanCode.germanAppV2.utilities.menu.Menu;
 import RuslanCode.germanAppV2.utilities.ProjectDataReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-//
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -25,7 +25,6 @@ public class NounController {
     private final NounService nounService;
     private final UserNounLinkService userNounLinkService;
     private final UserService userService;
-
 
     @GetMapping("/nouns")
     public String showNounsPage(Model model) throws IOException {

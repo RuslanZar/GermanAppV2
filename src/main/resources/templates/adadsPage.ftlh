@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>German App v${.version}</title>
+    <title>German App v2.0</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,11 +20,13 @@
             width: 100%;
             background-color: #3498db;
             color: #fff;
+            padding: 0px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-sizing: border-box;
         }
+
         h2 {
             color: #3498db;
         }
@@ -98,7 +100,7 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"], button  {
+        input[type="submit"], button {
             grid-column: span 2;
             padding: 10px;
             background-color: #3498db;
@@ -158,8 +160,9 @@
     </style>
 </head>
 <body>
-<header >
-    <h1 style="font-size: 40px; color: white; text-align: center; width : 100%">German App v${version}</h1>
+<header>
+    <h1 style="font-size: 40px; color: white; text-align: center; width : 100%">German App
+        v<#if version?has_content>${version}</#if></h1>
 </header>
 
 <nav>
@@ -170,52 +173,18 @@
 
 <main>
     <div class="container">
-        <h1>Fügen Sie die neuen Verben hinzu</h1>
-        <form id="addVerbForm">
+        <h1>Fügen Sie das neue Adjektiv oder Adverb hinzu.</h1>
+        <form id="addWordForm">
+
             <div>
-                <label for="russian_word">Verb auf Russisch:</label>
+                <label for="german_word">Ad/Ad auf Deutsch:</label>
+                <input onclick="changeActiveElement(id)" type="text" id="german_word" name="german_word" required>
+            </div>
+
+            <div>
+                <label for="russian_word">Ad/Ad auf Russisch:</label>
                 <input onclick="changeActiveElement(id)" type="text" id="russian_word" name="russian_word" required>
             </div>
-
-            <div>
-                <label for="infinitive">Infinitiv/wir/Sie/sie:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="infinitive" name="infinitiv" required>
-            </div>
-
-            <div>
-                <label for="prateritum">Präteritum ich:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="prateritum" name="präteritum">
-            </div>
-
-            <div>
-                <label for="particip2">Partizip II:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="particip2" name="participle">
-            </div>
-
-            <div>
-                <label for="ich_form">ich:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="ich_form" name="ich_form">
-            </div>
-
-            <div>
-                <label for="du_form">du:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="du_form" name="du_form">
-            </div>
-
-            <div>
-                <label for="er_sie_es_form">er/sie/es:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="er_sie_es_form" name="er_sie_es_form">
-            </div>
-
-            <div>
-                <label for="ihr_form">ihr:</label>
-                <input onclick="changeActiveElement(id)" type="text" id="ihr_form" name="ihr_form">
-            </div>
-
-<#--            <div>-->
-<#--                <label for="sie_Sie_form">Sie/sie:</label>-->
-<#--                <input type="text" id="sie_Sie_form" name="sie_Sie_form">-->
-<#--            </div>-->
             <div>
                 <button type="button" onclick="concatenate('ä')" style="margin-top: 20px">ä</button>
                 <button type="button" onclick="concatenate('Ä')" style="margin-top: 20px">Ä</button>
@@ -225,71 +194,51 @@
                 <button type="button" onclick="concatenate('Ü')" style="margin-top: 20px">Ü</button>
                 <button type="button" onclick="concatenate('ß')" style="margin-top: 20px">ß</button>
             </div>
+
             <input type="submit" value="Hinzufügen">
         </form>
 
-        <h2>Existing Verbs</h2>
+        <h2>Adjektive und Adverbien</h2>
         <table>
             <thead>
             <tr>
-                <th>Russisch</th>
-                <th>infinitiv/wir/Sie/sie</th>
-                <th>Präteritum ich</th>
-                <th>Partizip II</th>
-                <th>ich</th>
-                <th>du</th>
-                <th>er/sie/es</th>
-                <th>ihr</th>
-<#--                <th>Sie (plural, formal)</th>-->
-                <th>löschen</th>
+                <th>Ad/Ad auf Deutsch</th>
+                <th>Ad/Ad auf Russisch</th>
+                <th style="width: 10%">Löschen</th>
             </tr>
             </thead>
             <tbody>
-            <#if listOfVerbs?has_content>
-                <#list listOfVerbs as verb>
-                    <tr id="${verb.getId()}">
-                        <td>${verb.russian}</td>
-                        <td>${verb.infinitiv}</td>
-                        <td>${verb.prateritum}</td>
-                        <td>${verb.partizip2}</td>
-                        <td>${verb.ich}</td>
-                        <td>${verb.du}</td>
-                        <td>${verb.er_sie_es}</td>
-                        <td>${verb.ihr}</td>
-<#--                        <td>${verb.sie_Sie}</td>-->
+            <#if listOfAdAd?has_content>
+                <#list listOfAdAd as adad>
+                    <tr id="${adad.getId()}">
+                        <td>${adad.german}</td>
+                        <td>${adad.russian}</td>
                         <td style="padding: 0">
-                            <button class="shadowButton" onclick="deleteLine(${verb.getId()})">löschen</button>
+                            <button class="shadowButton" onclick="deleteLine(${adad.getId()})">löschen</button>
                         </td>
                     </tr>
                 </#list>
             <#else>
                 <tr>
-                    <td colspan="9">Keine Verben verfügbar.</td>
+                    <td colspan="3">Keine Adjektive oder Adverbien verfügbar.</td>
                 </tr>
             </#if>
             </tbody>
         </table>
     </div>
-
-    <script>
-        document.getElementById('addVerbForm').addEventListener('submit', function (event) {
+    <script title="vars">
+        let activeElement = null;
+    </script>
+    <script title="save new adad">
+        document.getElementById('addWordForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
-            // Collect form data
             const formData = {
                 russian: document.getElementById('russian_word').value,
-                infinitiv: document.getElementById('infinitive').value,
-                prateritum: document.getElementById('prateritum').value,
-                partizip2: document.getElementById('particip2').value,
-                ich: document.getElementById('ich_form').value,
-                du: document.getElementById('du_form').value,
-                er_sie_es: document.getElementById('er_sie_es_form').value,
-                ihr: document.getElementById('ihr_form').value,
-                // sie_Sie: document.getElementById('sie_Sie_form').value,
-                score: 0
+                german: document.getElementById('german_word').value,
             };
 
-            fetch('/saveNewVerb', {
+            fetch('/saveNewAdAd', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -298,7 +247,7 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        location.reload(); // Reload the page to show the new verb
+                        location.reload(); // Reload the page to show the new word
                     } else {
                         alert('Failed. Please try again.');
                     }
@@ -309,9 +258,9 @@
                 });
         });
     </script>
-    <script>
+    <script title="delete adad">
         function deleteLine(id) {
-            fetch('/deleteVerb', {
+            fetch('/deleteAdAd', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -320,19 +269,12 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        location.reload(); // Reload the page to show the updated list
+                        location.reload(); // Reload the page to show the new word
                     } else {
                         alert('Failed. Please try again.');
                     }
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred. Please try again later.');
-                });
         }
-    </script>
-    <script title="vars">
-        let activeElement = null;
     </script>
     <script title="active element change">
         function changeActiveElement(id) {

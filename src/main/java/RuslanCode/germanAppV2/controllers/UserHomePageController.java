@@ -1,14 +1,13 @@
 package RuslanCode.germanAppV2.controllers;
 
-import RuslanCode.germanAppV2.services.NounService;
-import RuslanCode.germanAppV2.services.PhraseService;
+import RuslanCode.germanAppV2.services.noun.NounService;
+import RuslanCode.germanAppV2.services.phrase.PhraseService;
 import RuslanCode.germanAppV2.services.UserService;
-import RuslanCode.germanAppV2.services.VerbService;
-import RuslanCode.germanAppV2.utilities.Menu;
+import RuslanCode.germanAppV2.services.verb.VerbService;
+import RuslanCode.germanAppV2.utilities.menu.Menu;
 import RuslanCode.germanAppV2.utilities.ProjectDataReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

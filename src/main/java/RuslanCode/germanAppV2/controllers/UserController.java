@@ -2,6 +2,10 @@ package RuslanCode.germanAppV2.controllers;
 
 import RuslanCode.germanAppV2.model.MyUser;
 import RuslanCode.germanAppV2.services.*;
+import RuslanCode.germanAppV2.services.noun.NounService;
+import RuslanCode.germanAppV2.services.noun.UserNounLinkService;
+import RuslanCode.germanAppV2.services.phrase.UserPhraseLinkService;
+import RuslanCode.germanAppV2.services.verb.UserVerbLinkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,22 +1,22 @@
 package RuslanCode.germanAppV2.controllers;
 
-import RuslanCode.germanAppV2.model.Exercise;
-import RuslanCode.germanAppV2.model.Noun;
-import RuslanCode.germanAppV2.model.Phrase;
-import RuslanCode.germanAppV2.model.Verb;
+import RuslanCode.germanAppV2.model.noun.Noun;
+import RuslanCode.germanAppV2.model.phrase.Phrase;
+import RuslanCode.germanAppV2.model.verb.Verb;
 import RuslanCode.germanAppV2.services.*;
-import RuslanCode.germanAppV2.utilities.Menu;
+import RuslanCode.germanAppV2.services.noun.NounService;
+import RuslanCode.germanAppV2.services.noun.UserNounLinkService;
+import RuslanCode.germanAppV2.services.phrase.PhraseService;
+import RuslanCode.germanAppV2.services.verb.VerbService;
+import RuslanCode.germanAppV2.utilities.menu.Menu;
 import RuslanCode.germanAppV2.utilities.ProjectDataReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.juli.logging.Log;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 import java.util.List;

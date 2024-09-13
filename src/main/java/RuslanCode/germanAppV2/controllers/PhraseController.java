@@ -1,10 +1,10 @@
 package RuslanCode.germanAppV2.controllers;
 
-import RuslanCode.germanAppV2.model.Noun;
-import RuslanCode.germanAppV2.model.Phrase;
-import RuslanCode.germanAppV2.model.UserNounLink;
+import RuslanCode.germanAppV2.model.phrase.Phrase;
 import RuslanCode.germanAppV2.services.*;
-import RuslanCode.germanAppV2.utilities.Menu;
+import RuslanCode.germanAppV2.services.phrase.PhraseService;
+import RuslanCode.germanAppV2.services.phrase.UserPhraseLinkService;
+import RuslanCode.germanAppV2.utilities.menu.Menu;
 import RuslanCode.germanAppV2.utilities.ProjectDataReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
